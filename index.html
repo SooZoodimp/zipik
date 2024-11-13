@@ -5,7 +5,11 @@
 	#zipon { display: none; }
 	#pipik { display: none; }
 
-	body { width: 100vw; height: 100vh; font-size: 30px; }
+	body {
+		overflow: hidden;
+		text-align: center;
+		width: 98vw; height: 98vh; font-size: 2em;
+	}
 	#background {
 		width: 100%; height: 100%;
 		background-position: center;
@@ -13,18 +17,17 @@
 	}
 	#zipon_img {
 		position: absolute;
-  		top: 50%; left: -240px;
+  		top: 10%; left: -240px;
   		transform: rotate(60deg);
   		transition: all .5s;
 	}
 	#pipik_img {
 		position: absolute;
-  		left: 50%; top: -240px;
-  		transform: scaleX(-1) rotate(210deg);
+  		top: 10%; right: -240px;
+  		transform: scaleX(-1) rotate(110deg);
   		transition: all .5s;
 	}
 
-	.zipon_char:hover #zipon_img { left: -200px; }
 }
 </style>
 
@@ -83,11 +86,11 @@
 
 		pipikElements.forEach(element => {
 			element.addEventListener('mouseenter', () => {
-				pipik_img.style.top = newValue;
+				pipik_img.style.right = newValue;
 			});
 
 			element.addEventListener('mouseleave', () => {
-				pipik_img.style.top = originalValue;
+				pipik_img.style.right = originalValue;
 			});
 		});
 
@@ -103,11 +106,6 @@
 	<img id="zipon_img" src="zipon.jpg"></span>
 	<img id="pipik_img" src="pipik.jpg"></span>
 
-	<div style="display: none;">
-	Zipoň<br>
-	e {-} {N} |G| g c {d} U |e| Q |k|
-	</div>
-
 	<div id="zipon">
 		<span class="zipon_char" title="4.">G</span>ejzidy Gejzidy,<br>
 		v hlavě <span class="pipik_char" title="9.">m</span>á hnidy,<br>
@@ -117,11 +115,6 @@
 		v pátek má asi robotu.<br>
 		Na týhle básni <span class="pipik_char" title="5.">n</span>eni narozeninovýho nic,<br>
 		snad neč<span class="zipon_char" title="9.">e</span>kal jsi víc.<br>
-	</div>
-
-	<div style="display: none;">
-	Pipík<br>
-	*I* 7 [b] U *n* R S [X] *m* [e] w
 	</div>
 
 	<div id="pipik">
