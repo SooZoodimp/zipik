@@ -1,46 +1,142 @@
 <!DOCTYPE html>
 <html lang="cs">
 
+<style type="text/css">
+	#zipon { display: none; }
+	#pipik { display: none; }
+
+	body { width: 100vw; height: 100vh; font-size: 30px; }
+	#background {
+		width: 100%; height: 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	#zipon_img {
+		position: absolute;
+  		top: 50%; left: -240px;
+  		transform: rotate(60deg);
+  		transition: all .5s;
+	}
+	#pipik_img {
+		position: absolute;
+  		left: 50%; top: -240px;
+  		transform: scaleX(-1) rotate(210deg);
+  		transition: all .5s;
+	}
+
+	.zipon_char:hover #zipon_img { left: -200px; }
+}
+</style>
+
 <script>
 	var password = prompt("Zadejte svou přezdívku ... eee .. teda heslo 😉:");
-	if (password.trim() === "Zipoň") {
-		alert('šikulík');
-	} else if (password.trim() === "Pipík") {
-		alert('šikulík');
-	}else{
-		alert('hupsík dupsík');
-	  	document.write("Řekl jsem heslo, myslel jsem přezdívku. Bez diakritiky");
+
+	var iterator = 0
+	while(!(password.trim()==="Zipoň" || password.trim() === "Pipík")){
+		password = prompt("hupsík dupsík č."+iterator+". Tak ještě jednou.");
+		if(iterator==2){
+			alert('Řekl jsem heslo, ale myslel jsem fakt přezdívku. :|');
+		}
+		if(iterator==5){
+			alert('Jako vážně? Normálně s velkýma písmenama i diakritikou. plsplsplspslpsl');	
+		}
+		if(iterator==10){
+			alert('Tak jseš Tupoň (nebo snad něco podobného)? Nebo Šuplík (nebo snad něco podobného)?');	
+		}
+		if(iterator==20){
+			alert('Však ty seš jasnej Zipoň nebo Pípík! ... ježkovi voči');	
+		}
+		iterator = iterator + 1;
 	}
+	alert('šikulík');
+
+	document.addEventListener("DOMContentLoaded", function() {
+		
+		if (password.trim() === "Zipoň") {
+			document.getElementById("zipon").style.display = "block"; 
+			document.getElementById("background").style.backgroundImage = "url(\'zipon.jpg\')"; 
+		}else if (password.trim() === "Pipík") {
+			document.getElementById("pipik").style.display = "block";
+			document.getElementById("background").style.backgroundImage = "url(\'pipik.jpg\')";
+		}
+
+
+		const originalValue = "-240px";
+		const newValue = "-80px";
+
+		const ziponElements = document.querySelectorAll('.zipon_char');
+		const zipon_img = document.getElementById('zipon_img');
+
+		ziponElements.forEach(element => {
+			element.addEventListener('mouseenter', () => {
+				zipon_img.style.left = newValue;
+			});
+
+			element.addEventListener('mouseleave', () => {
+				zipon_img.style.left = originalValue;
+			});
+		});
+
+
+		const pipikElements = document.querySelectorAll('.pipik_char');
+		const pipik_img = document.getElementById('pipik_img');
+
+		pipikElements.forEach(element => {
+			element.addEventListener('mouseenter', () => {
+				pipik_img.style.top = newValue;
+			});
+
+			element.addEventListener('mouseleave', () => {
+				pipik_img.style.top = originalValue;
+			});
+		});
+
+	});
+
 </script>
 
 
 <body>
-gwin (Zipoň)
-e - N G g c d U e Q k
 
-Kessidy - Kessidy,
-v hlavě má hnidy,
-kecám, má je v zadku,
-inu zjistíme to během pátku.
-Vlastně až v sobotu,
-v pátek má asi robotu.
-Na týhle básni neni narozeninovýho nic,
-snad nečekal jsi víc.
+<div id="background">
 
+	<img id="zipon_img" src="zipon.jpg"></span>
+	<img id="pipik_img" src="pipik.jpg"></span>
 
+	<div style="display: none;">
+	Zipoň<br>
+	e {-} {N} |G| g c {d} U |e| Q |k|
+	</div>
 
+	<div id="zipon">
+		<span class="zipon_char" title="4.">G</span>ejzidy Gejzidy,<br>
+		v hlavě <span class="pipik_char" title="9.">m</span>á hnidy,<br>
+		kecám, má je v zadku.<br>
+		<span class="pipik_char" title="1.">I</span>nu zjistíme to během pát<span class="zipon_char" title="11.">k</span>u.<br>
+		Vlastně až v sobotu,<br>
+		v pátek má asi robotu.<br>
+		Na týhle básni <span class="pipik_char" title="5.">n</span>eni narozeninovýho nic,<br>
+		snad neč<span class="zipon_char" title="9.">e</span>kal jsi víc.<br>
+	</div>
 
-pingu (Pipík)
-I 7 b U n R S X m e w
+	<div style="display: none;">
+	Pipík<br>
+	*I* 7 [b] U *n* R S [X] *m* [e] w
+	</div>
 
-A aby ti to nebylo líto Týno,
-Joe Špíno nosí plíno,
-tobě taky předběžně složím báseň,
-na saxofon hraje Kravavá dáseň.
-Taky nic narozeninovýho nečekej,
-tak hlavně neplakej.
-Máš oči jako kůň,
-... tůň.
+	<div id="pipik">
+		A<span class="pipik_char" title="3.">b</span>y ti to nebylo líto Týno,<br>
+		Joe Špíno nosí plíno,<br>
+		předběžně ti sklá<span class="zipon_char" title="7.">d</span>ám báseň,<br>
+		na SA<span class="pipik_char" title="8.">X</span>OFON hraje Kravavá dáseň.<br>
+		<span class="zipon_char" title="3.">N</span>ic narozeninovýho neček<span class="pipik_char" title="10.">e</span>j,<br>
+		tak hlavně neplakej.<br>
+		Máš oči jako kůň,<br>
+		<span class="zipon_char" title="2.">-</span> tůň.<br>
+	</div>
+
+</div>
+
 </body>
 
 </html>
